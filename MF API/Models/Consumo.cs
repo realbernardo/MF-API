@@ -16,6 +16,7 @@ namespace MF_API.Models
         public DateTime Data { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Valor { get; set; }
 
         [Required]
