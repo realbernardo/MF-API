@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MF_API.Models
 {
     [Table("Veiculos")]
-    public class Veiculo
+    public class Veiculo : LinkHATEOS
     {
         [Key]
         public int Id { get; set; }

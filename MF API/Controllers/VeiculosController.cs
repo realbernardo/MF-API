@@ -49,13 +49,14 @@ namespace MF_API.Controllers
         public async Task<ActionResult> GetById(int id)
         {
 
-            var model = await _context.Veiculos.FirstOrDefaultAsync(c => c.Id == id);
+            var model = await _context.Veiculos.Include(t => t.Consumos).FirstOrDefaultAsync(c => c.Id == id);
            
             if(model == null)
             {
                 return NotFound(new { message = "Veículo não encontrado" });
             }
 
+            GerarLinks(model);
             return Ok(model);
         }
 
@@ -100,6 +101,12 @@ namespace MF_API.Controllers
 
         }
 
+        private void GerarLinks(Veiculo model)
+        {
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "self", metodo: "GET"));
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "update", metodo: "PUT"));
+            model.Links.Add(new LinkDto(model.Id, Url.ActionLink(), rel: "delete", metodo: "DELETE"));
 
+        }
     }
 }
