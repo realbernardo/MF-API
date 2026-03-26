@@ -25,5 +25,6 @@ namespace MF_API.Models
         public int AnoModelo { get; set; }
 
         public ICollection<Consumo> Consumos { get; set; }
+        public ICollection<VeiculoUsuarios> Usuarios { get; set; }
     }
 }
