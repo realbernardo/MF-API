@@ -10,7 +10,7 @@ using System.Text;
 
 namespace MF_API.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase
